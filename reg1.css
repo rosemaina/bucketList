@@ -7,10 +7,16 @@ body
 
 #header
 {
-	margin-left:30%;
+	margin-left:40%;
 	padding-right:35%;
 }
 .iphone
 {
 	padding:3%;
+}
+#text
+{
+	color:black;
+	font-size:22px;
+	margin-left:30%;
 }
