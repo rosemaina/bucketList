@@ -1,28 +1,31 @@
 <html>
-    <head><title>Bucket list options</title>
-    <link rel="stylesheet" href="list.css"></head>
-	<body background="BucketList.jpg">
-    <div  id="header">
-        <form>
-            <fieldset>
-                <legend>BUCKET LIST</legend>
-                <label>OPTIONS</label><br>
-				<form>
-				<fieldset>
-                <legend>Create</legend>
-                <label>list</label><br>
-				<span class="textarea">
-                <textarea style="height:200px; width:300px"></textarea></span><br>
-				<input type="submit" value="Submit"><br>
-				<input type="submit" value="Add"><br>
-				<input type="submit" value="Delete"><br>
-				<input type="submit" value="Update"><br>
-				</fieldset>
-				</form>
-				<input type="submit" value="View"><br>
-            </fieldset>
-        </form>
-		</div>
+    <head>
+        <title>Bucket list options</title>
+        <link rel="stylesheet" href="list.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+	<body>
+        <div class="container"  id="header">
+            <form class="form-group">
+                <fieldset>
+                    <legend>BUCKET LIST</legend>
+                    <label>OPTIONS</label><br>
+        				<form class="form-group form-horizontal">
+            				<fieldset>
+                            <legend>Create</legend>
+                                <label>list</label><br>
+                				<span class="textarea">
+                                <textarea class="form-control" style="height:200px; width:300px"></textarea></span><br>
+                				<input type="submit" class="btn btn-success" value="Submit">
+                				<input type="submit" class="btn btn-primary" value="Add">
+                				<input type="submit" class="btn btn-danger" value="Delete">
+                				<input type="submit" class="btn btn-default" value="Update"><br>
+            				</fieldset>
+        				</form>
+        				<input type="submit" class="btn btn-primary" value="View"><br>
+                    </fieldset>
+                </form>
+    		</div>
                 
     </body>
 </html>

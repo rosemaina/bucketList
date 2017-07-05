@@ -9,3 +9,6 @@ body
   padding-top:6.5%;
   color:white;
 }
+label {
+	color: black;
+}

@@ -1,12 +1,10 @@
-body
-{
-  font-size: 25px;
-  margin-left:25%;
-  padding-top:10%;
-  padding-right:35%;
-
+body {
+	margin: auto;
+	background-image: url("BucketList1.jpg");
 }
-.textarea
-{
-	padding:40%;
+input {
+	margin: 5px;
+}
+form {
+	margin: auto;
 }

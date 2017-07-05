@@ -2,6 +2,10 @@ body
 {
   background-color:skyblue;
   font-size: 20px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 
@@ -19,4 +23,7 @@ body
 	color:black;
 	font-size:22px;
 	margin-left:30%;
+}
+label {
+	color: white;
 }
