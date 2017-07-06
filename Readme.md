@@ -1,6 +1,6 @@
 # Bucket List App
 
-**Introduction**
+## Introduction
 
 This is a front-end website that has no core functionalities implemented into it. It is therefore a designs page with no function pages. The application allows a user to create a bucket list, add items or activities, update the list, view the list and deleted items on the list or delete the list altogether.
  
@@ -14,7 +14,7 @@ This is a front-end website that has no core functionalities implemented into it
 +View items in the bucket list  
 +Delete items in a bucket list  
 
-**Setting Up**
+## Setting Up
 
 Any code editor.Reccomended visual studio code.
 
