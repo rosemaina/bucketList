@@ -6,13 +6,13 @@ This is a front-end website that has no core functionalities implemented into it
  
 **features** 
 
-+Create accounts for the user 
-+Create a login in 
-+Create, view, update and delete bucket lists 
-+Add items to bucket list 
-+Update items to the bucket list 
-+View items in the bucket list 
-+Delete items in a bucket list 
++Create accounts for the user  
++Create a login in  
++Create, view, update and delete bucket lists  
++Add items to bucket list  
++Update items to the bucket list  
++View items in the bucket list  
++Delete items in a bucket list  
 
 **Setting Up**
 
