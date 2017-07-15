@@ -40,7 +40,3 @@ Any code editor.Reccomended visual studio code.
 
 ## Credits
 I thank andela fellows for helping me 
-
-
-
-

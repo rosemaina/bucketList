@@ -1,0 +1,5 @@
+bucketenv/
+__pycache__/
+*.coverage
+*.pyc
+htmlcov/
