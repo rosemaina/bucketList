@@ -2,10 +2,11 @@ from app.models.bucketlist import Bucketlist
 from app.models.data import Data 
 class User(object):
     """The main user class"""
-    def __init__(self, username, email, password):
+    def __init__(self, username, email, password, _id=None):
         self.username = username 
         self.email = email
         self.password = password
+        self._id = _id
 
     @staticmethod
     def user_existence(email):
@@ -20,7 +21,7 @@ class User(object):
         bucketlist = Bucketlist(
             title=title,
             intro=intro,
-            user_id=user_id
+            user_id=self._id
             )
         # this saves bucketlists
         bucketlist.save_into_bucketlist()
@@ -43,12 +44,23 @@ class User(object):
             'username': self.username,
             'email': self.email,
             'password': self.password,
+            '_id': self._id
             }
-
-    @staticmethod
-    def create_item(bucketlist_id, item_name):
+   @staticmethod
+    def create_bucket_item(bucketlist_id, item_name,intro):
         """method used to create bucketlist items"""
-        _id = bucketlist_id
+        bucketlist = [x for x in Data.all_bucketlists if 
+        bucketlist_id == x['_id']]
+        bucketlist_data = bucketlist[0]
+        bucketlist = Bucketlist(bucketlist_data['title'],
+			bucketlist_data['intro'],
+			bucketlist_data['user_id'],
+			bucketlist_data['_id']
+			)
+        bucketlist.create_item(
+            item_name=item_name,
+            intro=intro
+            )
        
 
     def save_into_user(self):
