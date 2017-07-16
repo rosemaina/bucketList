@@ -46,7 +46,8 @@ class User(object):
             'password': self.password,
             '_id': self._id
             }
-   @staticmethod
+            
+    @staticmethod
     def create_bucket_item(bucketlist_id, item_name,intro):
         """method used to create bucketlist items"""
         bucketlist = [x for x in Data.all_bucketlists if 
