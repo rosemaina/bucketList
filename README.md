@@ -4,31 +4,53 @@
 
 This is a front-end website that has no core functionalities implemented into it. It is therefore a designs page with no function pages. The application allows a user to create a bucket list, add items or activities, update the list, view the list and deleted items on the list or delete the list altogether.
 
-**features** 
+## Prerequisites
++python3
++flask    
 
-+Create accounts for the user  
-+Create a login in  
+**Getting Started** 
+
++A user can create an account  
++A user can login  
 +Create, view, update and delete bucket lists  
 +Add items to bucket list  
 +Update items to the bucket list  
 +View items in the bucket list  
 +Delete items in a bucket list  
 
-## Setting Up
+## Installation
 
-Any code editor.Reccomended visual studio code.
+Clone the repo 
+ ``git clone https://github.com/rosemaina/bucket_list.git <foldername>``
+ 
 
--Make a folder in home dir:
+Change the Directory into the project folder
+ ``cd <foldername>``
 
-  $ mkdir ~/work-dir  
-  $ cd ~/work-dir  
-  
--Clone this repo:
+Create a virtual environment with Python
+On  Ubuntu:
 
-  $ git clone https://github.com/rosemaina/bucket_list   
-  $ cd ~/bucket_list 
-  
--Launch the pages using the terminal in Chrome, Safari,Mozilla  
+    ``$ sudo apt-get install python-virtualenv <yourenvname``
+On Windows:
+
+    ``$ pip install virtualenv <yourenvname>``
+Activate the virtual environment
+
+    ``$ source <yourenvname>/bin/activate``
+Deactivate
+
+    ``$ deactivate``
+    
+
+Install the application's dependencies from requirements.txt to the virtual environment
+
+    ``$ pip install -r requirements.txt`` 
+    
+## Testing
+To test the app run the following command
+    ``nosetests bucket_list/tests``
+    
+
 
 ## Contributing 
 
@@ -39,4 +61,5 @@ Any code editor.Reccomended visual studio code.
 -Submit a pull request:D  
 
 ## Credits
-I thank andela fellows for helping me 
+Andela Community  
+Andela Bootcamp 20
