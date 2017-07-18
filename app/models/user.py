@@ -56,11 +56,12 @@ class User(object):
             bucketlist_data = bucketlist_info[0]
         except IndexError:
             return 'Item not found'
-        bucketlist = Bucketlist(bucketlist_data['title'],
-                                bucketlist_data['intro'],
-                                bucketlist_data['user_id'],
-                                bucketlist_data['_id']
-                               )
+        finally:
+            bucketlist = Bucketlist(bucketlist_data['title'],
+                                    bucketlist_data['intro'],
+                                    bucketlist_data['user_id'],
+                                    bucketlist_data['_id']
+                                   )
         bucketlist.create_item(item_name=item_name,
                                intro=intro
                               )
