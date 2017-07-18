@@ -1,3 +1,4 @@
+"""This is the item module"""
 from app.models.data import Data
 class Item(object):
     """This is the main item class"""
@@ -7,7 +8,6 @@ class Item(object):
         self.intro = intro
         self.bucketlist_id = bucketlist_id
         self._id = _id
-    
     def item_data(self):
         """Returns data to be saved in the all_items list"""
         return {
@@ -20,5 +20,4 @@ class Item(object):
     def save_into_item(self):
         """Method saves into item"""
         Data.all_items.append(self.item_data())
-
-        
+          

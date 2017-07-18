@@ -1,10 +1,10 @@
 """ This is the main module for the bucketlist """
-from app.models.item import Item
-from app.models.data import Data
+from item import Item
+from data import Data
 class Bucketlist(object):
     """This is the main class"""
 
-    def __init__(self, title,intro,user_id, _id=None):
+    def __init__(self, title, intro, user_id, _id=None):
         self.title = title
         self.intro = intro
         self.user_id = user_id
