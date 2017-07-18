@@ -1,6 +1,7 @@
 """This is the user module"""
 from app.models.bucketlist import Bucketlist
 from app.models.data import Data
+from app.models.item import Item
 class User(object):
     """The main user class"""
     def __init__(self, username, email, password, _id=None):
@@ -47,19 +48,22 @@ class User(object):
             }
 
     @staticmethod
-    def create_bucket_item(bucketlist_id, item_name, intro):
+    def create_bucket_item(item_name, intro, bucketlist_id=None):
         """Method used to create bucketlist items"""
-        bucketlist_info = [n for n in Data.all_bucketlists if bucketlist_id == n['_id']]
-        bucketlist_data = bucketlist_info[0]
+        try:
+            bucketlist_info = [n for n in Data.all_bucketlists if
+                               bucketlist_id == n['_id']]
+            bucketlist_data = bucketlist_info[0]
+        except IndexError:
+            return 'Item not found'
         bucketlist = Bucketlist(bucketlist_data['title'],
                                 bucketlist_data['intro'],
                                 bucketlist_data['user_id'],
                                 bucketlist_data['_id']
                                )
-        bucketlist.create_item(
-            item_name=item_name,
-            intro=intro
-        )
+        bucketlist.create_item(item_name=item_name,
+                               intro=intro
+                              )
 
     def save_into_user(self):
         """Method saves into user"""
