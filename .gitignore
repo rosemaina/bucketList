@@ -3,5 +3,5 @@ __pycache__/
 *.coverage
 *.pyc
 htmlcov/
-vscode/
-.noseids
+.vscode/
+*.noseids
