@@ -12,7 +12,7 @@ class Testbucketlist(unittest.TestCase):
                      }
     def test_create_item(self):
         """Tests if a new  item has been created"""
-        bucket = Bucketlist('bucket 1', 'test intro', '485983354754', _id=None)
-        bucket.create_item('skinny dipping', 'item introduction', '485983354754')
+        bucket = Bucketlist('bucket 1', 'test intro', '4444')
+        bucket.create_item('skinny dipping', 'item introduction', '4444')
         result = len(self.data.all_items)
         self.assertEqual(result, 1)
