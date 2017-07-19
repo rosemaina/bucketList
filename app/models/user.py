@@ -33,10 +33,6 @@ class User(object):
             new_user.save_into_user()
             return new_user
 
-    # def update_user(self, ):
-
-
-
     def user_data(self):
         """Returns data to be saved in the all_users list"""
         return {
@@ -67,3 +63,5 @@ class User(object):
         """Method saves into user"""
         # adds the method for getting user data into the users' list
         Data.all_users.append(self.user_data())
+
+    
