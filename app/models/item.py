@@ -7,16 +7,14 @@ class Item(object):
         self.item_name = item_name
         self.intro = intro
         self.bucketlist_id = bucketlist_id
-        self._id = _id
     def item_data(self):
         """Returns data to be saved in the all_items list"""
         return {
             'item_name': self.item_name,
             'intro': self.intro,
-            'bucketlist_id': self.bucketlist_id,
-            '_id': self._id
+            'bucketlist_id': self.bucketlist_id
             }
-
+    #saves item data into item's list
     def save_into_item(self):
         """Method saves into item"""
         Data.all_items.append(self.item_data())
