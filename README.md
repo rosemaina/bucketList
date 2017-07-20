@@ -25,7 +25,7 @@ Clone the repo
  
 
 Change the Directory into the project folder
- ``cd <foldername>``
+ cd <foldername>
 
 Create a virtual environment with Python
 On  Ubuntu:
@@ -44,11 +44,7 @@ Deactivate
 
 Install the application's dependencies from requirements.txt to the virtual environment
 
-    ``$ pip install -r requirements.txt`` 
-    
-## Testing
-To test the app run the following command
-    ``nosetests bucket_list/tests``
+    $ pip install -r requirements.txt
     
 
 
@@ -61,5 +57,6 @@ To test the app run the following command
 -Submit a pull request:D  
 
 ## Credits
+Rose Maina
 Andela Community  
 Andela Bootcamp 20
