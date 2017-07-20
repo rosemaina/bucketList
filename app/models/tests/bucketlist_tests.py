@@ -16,3 +16,7 @@ class Testbucketlist(unittest.TestCase):
         bucket.create_item('skinny dipping', 'item introduction', '4444')
         result = len(self.data.all_items)
         self.assertEqual(result, 1)
+
+if __name__ == '__main__':
+    unittest.main()
+    

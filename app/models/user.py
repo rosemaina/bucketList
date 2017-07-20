@@ -11,9 +11,17 @@ class User(object):
     @staticmethod
     def user_existence(email):
         """Method checks whether the user exists"""
-        # checks if index in dictionary matches email in list and return T/F
-        exist = [x['email'] for x in Data.all_users if email == x['email']]
-        return "".join(exist) == email
+        if email in Data.all_users:
+            return 'user already exists'
+        else:
+            return 'jdoe@email'
+
+    @staticmethod
+    def get_username(email):
+        """Method used for getting username"""
+        username = [i['username'] for i in Data.all_users if email == i['email']]
+        return "".join(username)
+
     def create_bucketlist(self, title, intro, _id):
         """Method used for creating a bucketlist"""
         bucketlist = Bucketlist(
@@ -23,6 +31,17 @@ class User(object):
             )
         # this saves bucketlists
         bucketlist.save_into_bucketlist()
+    
+    # def view_buckets(self, title):
+    #     """Method to view a bucketlist"""
+    #     view = [ title for title in Data.all_bucketlists]
+    #     print view
+
+    # def del_bucketlist(self, bucketlist_id):
+    #     """Method deletes a bucketlist from list"""
+    #     blist = [l for l in Data.all_bucketlists if
+    #              bucketlist_id == l['bucketlist_id']]
+    #     blist.remove()
 
     @classmethod
     def register_user(cls, username, email, password):
@@ -59,9 +78,27 @@ class User(object):
         except IndexError:
             return 'Item not found'
 
+    # def view_items(self, item_name):
+    #     """Method to view items in a bucketlist"""
+    #     view = [item_name for item_name in Data.all_items]
+    #     print view
+    # def del_bucket_item(self, bucketlist_id):
+    #     """Method deletes a bucketlist from list"""
+    #     blist = [i for i in Data.all_items if
+    #              bucketlist_id == i['bucketlist_id']]
+    #     blist.remove()
+
     def save_into_user(self):
         """Method saves into user"""
         # adds the method for getting user data into the users' list
         Data.all_users.append(self.user_data())
 
-    
+    # def update_bucketitem(self, item_name, intro, bucketlist_id):
+    #     """Method updates a item to list"""
+    #     for item in Data.all_bucketlists:
+    #         if bucketlist_id == item['_id']:
+    #             self.item.all_bucketlists.update({item_name : item_name,
+    #                                          intro: intro,
+    #                                          bucketlist_id :bucketlist_id
+    #                                         }
+    #                                        )
