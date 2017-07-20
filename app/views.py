@@ -21,7 +21,7 @@ def index():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-    return render_template('index.html')
+    return render_template('index')
 
 
 @app.route('/registration')
@@ -46,4 +46,4 @@ def registration():
 @app.route('/create_list')
 def create_list():
     """Renders the create bucketlist of the app"""
-    return render_template('create_list.html')
+    return render_template('create_list')
