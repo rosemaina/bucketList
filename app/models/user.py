@@ -11,10 +11,10 @@ class User(object):
     @staticmethod
     def user_existence(email):
         """Method checks whether the user exists"""
-        if email in Data.all_users:
-            return 'user already exists'
+        if email in [user['email'] for user in Data.all_users]:
+            return 'User already exists'
         else:
-            return 'jdoe@email'
+            return False
 
     @staticmethod
     def get_username(email):
@@ -32,16 +32,23 @@ class User(object):
         # this saves bucketlists
         bucketlist.save_into_bucketlist()
     
-    # def view_buckets(self, title):
-    #     """Method to view a bucketlist"""
-    #     view = [ title for title in Data.all_bucketlists]
-    #     print view
+    def view_buckets(self, title):
+        """Method to view a bucketlist"""
+        view = [ title for title in Data.all_bucketlists]
+        print view
 
-    # def del_bucketlist(self, bucketlist_id):
-    #     """Method deletes a bucketlist from list"""
-    #     blist = [l for l in Data.all_bucketlists if
-    #              bucketlist_id == l['bucketlist_id']]
-    #     blist.remove()
+    def del_bucketlist(self, bucketlist_id):
+        """Method deletes a bucketlist from list"""
+        blist = [l for l in Data.all_bucketlists if
+                 bucketlist_id == l['bucketlist_id']]
+        blist.remove()
+
+    def update_bucketlist(self, title, intro, bucketlist_id):
+        self.title = title
+        self.intro = intro
+        self.bucketlist_id = bucketlist_id
+        return self
+
 
     @classmethod
     def register_user(cls, username, email, password):
@@ -51,6 +58,9 @@ class User(object):
             new_user = cls(username, email, password)
             new_user.save_into_user()
             return new_user
+        else:
+            return user
+    
 
     def user_data(self):
         """Returns data to be saved in the all_users list"""
@@ -78,27 +88,24 @@ class User(object):
         except IndexError:
             return 'Item not found'
 
-    # def view_items(self, item_name):
-    #     """Method to view items in a bucketlist"""
-    #     view = [item_name for item_name in Data.all_items]
-    #     print view
-    # def del_bucket_item(self, bucketlist_id):
-    #     """Method deletes a bucketlist from list"""
-    #     blist = [i for i in Data.all_items if
-    #              bucketlist_id == i['bucketlist_id']]
-    #     blist.remove()
+    def view_items(self, item_name):
+        """Method to view items in a bucketlist"""
+        view = [item_name for item_name in Data.all_items]
+        print view
+
+    def update_item(self, item_name, intro, bucketlist_id):
+        self.item_name = item_name
+        self.intro = intro
+        self.bucketlist_id = bucketlist_id
+        return self
+
+    def del_bucket_item(self, bucketlist_id):
+        """Method deletes a bucketlist from list"""
+        blist = [i for i in Data.all_items if
+                 bucketlist_id == i['bucketlist_id']]
+        blist.remove()
 
     def save_into_user(self):
         """Method saves into user"""
         # adds the method for getting user data into the users' list
         Data.all_users.append(self.user_data())
-
-    # def update_bucketitem(self, item_name, intro, bucketlist_id):
-    #     """Method updates a item to list"""
-    #     for item in Data.all_bucketlists:
-    #         if bucketlist_id == item['_id']:
-    #             self.item.all_bucketlists.update({item_name : item_name,
-    #                                          intro: intro,
-    #                                          bucketlist_id :bucketlist_id
-    #                                         }
-    #                                        )

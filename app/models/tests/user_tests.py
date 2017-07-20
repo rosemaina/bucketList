@@ -30,18 +30,18 @@ class Testuser(unittest.TestCase):
         User.register_user('Rose maina', 'rossie@email', '9999')
         response = User.register_user('Rose maina', 'rossie@email', '9999')
         self.assertEqual(response, "User already exists")
-
-    def test_register_user(self):
-        """Tests registration of the user"""
-        self.data.all_users.append(self.user1)
-        User.register_user('Rose Maina', 'rossie@email', '9999')
-        result = User.register_user('Jane Doe', 'jdoe@email', '4444')
-        self.assertEqual(result, 'jdoe@email')
-
+    
     def test_get_username(self):
         """Test returns a username"""
         result = User.get_username('jdoe@email')
         self.assertEqual(result, '')
+
+    def test_register_user(self):
+        """Tests registration of the user"""
+        # self.data.all_users.append(self.user1)
+        # User.register_user('Rose Maina', 'rossie@email', '9999')
+        result = User.register_user('Jane Doe', 'jdoe@email', '4444')
+        self.assertEqual(result.email, 'jdoe@email')
 
     def test_create_bucketlist(self):
         """Tests if a bucketlist has been created"""
