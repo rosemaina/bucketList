@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/cloudfoundry/membrane.png)](https://codeclimate.com/github/cloudfoundry/membrane)
+  [![Build Status](https://travis-ci.org/cloudfoundry/membrane.png)](https://travis-ci.org/cloudfoundry/membrane)
+  
 # Bucket List App
 
 ## Introduction
@@ -16,19 +19,20 @@ This is a front-end website that has no core functionalities implemented into it
 
 ## Setting Up
 
-Any code editor.Reccomended visual studio code.
+Clone the project
+git clone https://github.com/rosemaina/bucket_list <foldername>  
 
--Make a folder in home dir:
+$ cd~/<foldername>  
 
-  $ mkdir ~/work-dir  
-  $ cd ~/work-dir  
-  
--Clone this repo:
+Create virtual environment:
+$ sudo apt-get install python-virtualenv  
+Activate virtualenv:
+$ source <envname>/bin/activate    
+Run the app on port 5000  
+python run.py
+Access the page in the browser
+localhost:5000
 
-  $ git clone https://github.com/rosemaina/bucket_list   
-  $ cd ~/bucket_list 
-  
--Launch the pages using the terminal in Chrome, Safari,Mozilla  
 
 ## Contributing 
 
@@ -39,4 +43,5 @@ Any code editor.Reccomended visual studio code.
 -Submit a pull request:D  
 
 ## Credits
-I thank andela fellows for helping me 
+Rose Maina  
+Andela Community
