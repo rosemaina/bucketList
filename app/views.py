@@ -1,9 +1,16 @@
 """This script Creates the application object"""
 from app import app
 from app.models.user import User
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
+from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
 app = Flask(__name__)
+app.config.from_object(__name__)
+
+class ReusableForm(Form):
+    username = TextField('username:',validators=[validators.required()])
+    email = TextField('email:', validators=[validators.required(), validators.Length(min=6, max=16)])
+    password = TextField('password:', validators=[validators.required(), validators.Length(min=4, max=16)])
 
 
 @app.route('/')
@@ -22,13 +29,26 @@ def index():
 @app.route('/registration')
 def registration():
     """renders the registration page of the app"""
-    user = {
-        "email": "jdoe@email",
-        "password": "4444",
-        "confirm_password": "4444"
-        }
 
-    return render_template('registration.html', user=user)
+    form = ReusableForm(request.form)
+    print (form.errors)
+    if request.method == 'POST':
+        username=request.form['username']
+        email=request.form['email']
+        password=request.form['password']
+        print (username, " ", email, " ", password)
+
+        if form.validate():
+            flash('Thanks for registration' + username)
+        else:
+            flash('Error:Unaswered form field. ')
+    # user = {
+    #     "email": "jdoe@email",
+    #     "password": "4444",
+    #     "confirm_password": "4444"
+    #     }
+
+    return render_template('registration.html', form=form)
 
 
 @app.route('/create_list')
