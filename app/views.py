@@ -1,10 +1,8 @@
 """This script Creates the application object"""
-from app import app
-from app.models.user import User
 from flask import Flask, render_template, request, redirect, url_for, flash
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
 
-app = Flask(__name__)
+app = Flask(__name__) 
 app.config.from_object(__name__)
 
 class ReusableForm(Form):
@@ -33,22 +31,16 @@ def registration():
     form = ReusableForm(request.form)
     print (form.errors)
     if request.method == 'POST':
-        username=request.form['username']
-        email=request.form['email']
-        password=request.form['password']
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
         print (username, " ", email, " ", password)
 
         if form.validate():
             flash('Thanks for registration' + username)
         else:
             flash('Error:Unaswered form field. ')
-    # user = {
-    #     "email": "jdoe@email",
-    #     "password": "4444",
-    #     "confirm_password": "4444"
-    #     }
-
-    return render_template('registration.html', form=form)
+    return render_template('registration', form=form)
 
 
 @app.route('/create_list')
