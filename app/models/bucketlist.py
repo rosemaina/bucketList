@@ -1,6 +1,8 @@
 """ This is the main module for the bucketlist """
 from app.models.item import Item
 from app.models.data import Data
+
+
 class Bucketlist(object):
     """This is the main class"""
 
@@ -18,21 +20,14 @@ class Bucketlist(object):
         )
         # this saves items
         item.save_into_item()
-    
-    # def del_bucketitems(self, bucketlist_id):
-    #     """ A function for deleting bucket activities """
-    #     # Checks if the bucket list item to be deleted is in the bucket list
-    #     item = [bucketlist_id for bucketlist_id in Data.all_bucketlists if
-    #             bucketlist_id in Data.all_bucketlists]
-    #     del item['bucket_id']
 
     def bucketlist_data(self):
         """Returns data to be saved in the all_bucketlist list"""
         return {
-                '_id': self._id,
-                'title': self.title,
-                'intro': self.intro
-               }
+            '_id': self._id,
+            'title': self.title,
+            'intro': self.intro
+            }
 
     def save_into_bucketlist(self):
         """Method saves into bucketlist """

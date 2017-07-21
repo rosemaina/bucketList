@@ -1,49 +1,39 @@
 """This script Creates the application object"""
-from flask import Flask, render_template, request, redirect, url_for, flash
-from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+from flask import Flask, render_template, request, redirect, url_for
+from app.models.user import User
 
-app = Flask(__name__) 
+app = Flask(__name__)
 app.config.from_object(__name__)
 
-class ReusableForm(Form):
-    username = TextField('username:',validators=[validators.required()])
-    email = TextField('email:', validators=[validators.required(), validators.Length(min=6, max=16)])
-    password = TextField('password:', validators=[validators.required(), validators.Length(min=4, max=16)])
+app.users = {}
+app.bucketlists = {}
+app.items = {}
 
 
 @app.route('/')
 @app.route('/index', methods=['POST', 'GET'])
 def index():
     """renders the homepage of the app"""
-    #this will get you the variables when someone submits
-    #the form since we have set our forms method to POST
-    data = {'host_url': request.host_url}
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-    return render_template('index')
+    return render_template('index.html')
 
 
-@app.route('/registration')
+@app.route('/registration', methods=['GET', 'POST'])
 def registration():
     """renders the registration page of the app"""
-
-    form = ReusableForm(request.form)
-    print (form.errors)
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        print (username, " ", email, " ", password)
+        new_user = User(username, email, password)
+        # saves the new user object to app.user
+        app.users[username] = new_user
 
-        if form.validate():
-            flash('Thanks for registration' + username)
-        else:
-            flash('Error:Unaswered form field. ')
-    return render_template('registration', form=form)
+        return redirect(url_for('/registration'))
+
+    return render_template('registration.html')
 
 
 @app.route('/create_list')
 def create_list():
     """Renders the create bucketlist of the app"""
-    return render_template('create_list')
+    return render_template('create_list.html')

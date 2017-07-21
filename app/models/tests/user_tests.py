@@ -19,6 +19,7 @@ class Testuser(unittest.TestCase):
                       'item_name' : 'skinny dipping',
                       'intro' : 'will jump at Sagana-River Tana'
                      }
+        self.del_bucketlist = {'bucketlist_id': '9999'}
         del self.data.all_users[:]
         del self.data.all_bucketlists[:]
         del self.data.all_items[:]
@@ -29,8 +30,7 @@ class Testuser(unittest.TestCase):
         User.register_user('Rose maina', 'rossie@email', '9999')
         User.register_user('Rose maina', 'rossie@email', '9999')
         response = User.register_user('Rose maina', 'rossie@email', '9999')
-        self.assertEqual(response, "User already exists")
-    
+        self.assertEqual(response, "User already exists")    
     def test_get_username(self):
         """Test returns a username"""
         result = User.get_username('jdoe@email')
@@ -50,6 +50,13 @@ class Testuser(unittest.TestCase):
                                'what i want to do before 40', '4444')
         result = len(self.data.all_bucketlists)
         self.assertEqual(result, 1)
+    def test_del_bucketlist(self):
+        user = User('Rose Maina', 'rossie@email', 'password')
+        user.create_bucketlist("learn python", "learn data types", '9999')
+        count = len(self.data.all_bucketlists)
+        user.del_bucketlist('9999')
+        new_count = count- len(self.data.all_bucketlists)
+        self.assertEqual(new_count, 1)
     def test_create_bucket_item(self):
         """Test if an item has been created in the bucketlist"""
         self.data.all_bucketlists.append(self.bucketlist1)
@@ -59,6 +66,16 @@ class Testuser(unittest.TestCase):
                                )
         result = len(self.data.all_items)
         self.assertEqual(result, 1)
+
+    def test_del_bucket_item(self):
+        """Tests if an item in buckelist can be deleted"""
+        user = User('Rose Maina', 'rossie@email', '9999')
+        user.create_bucket_item('sagana',
+                                'bungee jumping', '9999')
+        count = len(self.data.all_items)
+        user.del_bucket_item('9999')
+        new_count = count- len(self.data.all_items)
+        self.assertEqual(new_count, 1)
 
 
 

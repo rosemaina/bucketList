@@ -1,6 +1,10 @@
 """This is the user module"""
+
+
 from app.models.bucketlist import Bucketlist
 from app.models.data import Data
+
+
 class User(object):
     """The main user class"""
     def __init__(self, username, email, password):
@@ -19,7 +23,8 @@ class User(object):
     @staticmethod
     def get_username(email):
         """Method used for getting username"""
-        username = [i['username'] for i in Data.all_users if email == i['email']]
+        username = [i['username'] for i in
+                    Data.all_users if email == i['email']]
         return "".join(username)
 
     def create_bucketlist(self, title, intro, _id):
@@ -30,25 +35,22 @@ class User(object):
             _id=_id
             )
         # this saves bucketlists
-        bucketlist.save_into_bucketlist()
-    
-    def view_buckets(self, title):
-        """Method to view a bucketlist"""
-        view = [ title for title in Data.all_bucketlists]
-        print view
 
-    def del_bucketlist(self, bucketlist_id):
+        bucketlist.save_into_bucketlist()
+
+
+    def del_bucketlist(self, _id):
         """Method deletes a bucketlist from list"""
-        blist = [l for l in Data.all_bucketlists if
-                 bucketlist_id == l['bucketlist_id']]
-        blist.remove()
+        blist = [l for l in Data.all_bucketlists if _id == l['_id']]
+        Data.all_bucketlists.remove(blist[0])
+        return True
 
     def update_bucketlist(self, title, intro, bucketlist_id):
+        """Method used to update bucket lists"""
         self.title = title
         self.intro = intro
         self.bucketlist_id = bucketlist_id
         return self
-
 
     @classmethod
     def register_user(cls, username, email, password):
@@ -60,7 +62,6 @@ class User(object):
             return new_user
         else:
             return user
-    
 
     def user_data(self):
         """Returns data to be saved in the all_users list"""
@@ -80,30 +81,20 @@ class User(object):
             bucketlist = Bucketlist(bucketlist_data['title'],
                                     bucketlist_data['intro'],
                                     bucketlist_data['_id']
-                                   )
+                                    )
             bucketlist.create_item(item_name=item_name,
                                    intro=intro,
                                    bucketlist_id=bucketlist._id
-                                  )
+                                   )
         except IndexError:
             return 'Item not found'
 
-    def view_items(self, item_name):
-        """Method to view items in a bucketlist"""
-        view = [item_name for item_name in Data.all_items]
-        print view
-
-    def update_item(self, item_name, intro, bucketlist_id):
-        self.item_name = item_name
-        self.intro = intro
-        self.bucketlist_id = bucketlist_id
-        return self
-
-    def del_bucket_item(self, bucketlist_id):
-        """Method deletes a bucketlist from list"""
+    def del_bucket_item(self, _id):
+        """Method for deleting  item from bukcet list"""
         blist = [i for i in Data.all_items if
-                 bucketlist_id == i['bucketlist_id']]
-        blist.remove()
+                 _id == i['_id']]
+        Data.all_items.remove(blist[0])
+        return True
 
     def save_into_user(self):
         """Method saves into user"""
