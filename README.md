@@ -1,7 +1,7 @@
 [![Code Climate](https://codeclimate.com/github/cloudfoundry/membrane.png)](https://codeclimate.com/github/cloudfoundry/membrane)
   [![Build Status](https://travis-ci.org/cloudfoundry/membrane.png)](https://travis-ci.org/cloudfoundry/membrane)
-   [![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
-
+  [![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
+  
 # Bucket List App
 
 ## Introduction
@@ -22,6 +22,7 @@ This is a front-end website that has no core functionalities implemented into it
 +View items in the bucket list  
 +Delete items in a bucket list  
 
+
 ## Installation
 
 Clone the repo 
@@ -40,8 +41,6 @@ Run the app on port 5000
 python run.py
 Access the page in the browser
 localhost:5000
-    
-
 
 ## Contributing 
 
@@ -52,6 +51,6 @@ localhost:5000
 -Submit a pull request:D  
 
 ## Credits
-Rose Maina
-Andela Community  
+Rose Maina  
+Andela Community
 Andela Bootcamp XX
