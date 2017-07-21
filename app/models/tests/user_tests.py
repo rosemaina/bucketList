@@ -2,35 +2,34 @@
 import unittest
 from app.models.user import User
 from app.models.data import Data
+
+
 class Testuser(unittest.TestCase):
     """User test class"""
     def setUp(self):
         self.data = Data()
         self.user1 = {'username': 'Rose Maina',
                       'password': '12345',
-                      'email': 'rossie@email'
-                     }
-        self.bucketlist1 = {'title' : 'bucketlist before 40!',
-                            'intro' : 'what i want to do before 40',
-                            '_id' : '4444',
-                            'username' : 'Jane Doe',
-                           }
-        self.item1 = {'bucketlist_id' : '',
-                      'item_name' : 'skinny dipping',
-                      'intro' : 'will jump at Sagana-River Tana'
-                     }
+                      'email': 'rossie@email'}
+        self.bucketlist1 = {'title': 'bucketlist before 40!',
+                            'intro': 'what i want to do before 40',
+                            '_id': '4444',
+                            'username': 'Jane Doe'}
+        self.item1 = {'bucketlist_id': '',
+                      'item_name': 'skinny dipping',
+                      'intro': 'will jump at Sagana-River Tana'}
         self.del_bucketlist = {'bucketlist_id': '9999'}
         del self.data.all_users[:]
         del self.data.all_bucketlists[:]
         del self.data.all_items[:]
-
 
     def test_user_existence(self):
         """Tests whether the user exists"""
         User.register_user('Rose maina', 'rossie@email', '9999')
         User.register_user('Rose maina', 'rossie@email', '9999')
         response = User.register_user('Rose maina', 'rossie@email', '9999')
-        self.assertEqual(response, "User already exists")    
+        self.assertEqual(response, "User already exists")
+
     def test_get_username(self):
         """Test returns a username"""
         result = User.get_username('jdoe@email')
@@ -50,34 +49,36 @@ class Testuser(unittest.TestCase):
                                'what i want to do before 40', '4444')
         result = len(self.data.all_bucketlists)
         self.assertEqual(result, 1)
+
     def test_del_bucketlist(self):
+        """Test if a bucketlist has been deleted"""
         user = User('Rose Maina', 'rossie@email', 'password')
         user.create_bucketlist("learn python", "learn data types", '9999')
         count = len(self.data.all_bucketlists)
         user.del_bucketlist('9999')
-        new_count = count- len(self.data.all_bucketlists)
+        new_count = count - len(self.data.all_bucketlists)
         self.assertEqual(new_count, 1)
+
     def test_create_bucket_item(self):
         """Test if an item has been created in the bucketlist"""
         self.data.all_bucketlists.append(self.bucketlist1)
         user = User('Jane Doe', 'jdoe', '9876')
         user.create_bucket_item('bucketlist before 40!',
-                                'what i want to do before 40', '4444'
-                               )
+                                'what i want to do before 40', '4444')
+
         result = len(self.data.all_items)
         self.assertEqual(result, 1)
 
     def test_del_bucket_item(self):
         """Tests if an item in buckelist can be deleted"""
-        user = User('Rose Maina', 'rossie@email', '9999')
+        user = User('Rose Maina', 'rossie@email', 'password')
+        user.create_bucketlist("learn python", "learn data types", '9999')
         user.create_bucket_item('sagana',
                                 'bungee jumping', '9999')
         count = len(self.data.all_items)
         user.del_bucket_item('9999')
-        new_count = count- len(self.data.all_items)
+        new_count = count - len(self.data.all_items)
         self.assertEqual(new_count, 1)
-
-
 
 if __name__ == '__main__':
     unittest.main()

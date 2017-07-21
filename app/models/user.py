@@ -38,7 +38,6 @@ class User(object):
 
         bucketlist.save_into_bucketlist()
 
-
     def del_bucketlist(self, _id):
         """Method deletes a bucketlist from list"""
         blist = [l for l in Data.all_bucketlists if _id == l['_id']]
@@ -80,19 +79,17 @@ class User(object):
             bucketlist_data = bucketlist_info[0]
             bucketlist = Bucketlist(bucketlist_data['title'],
                                     bucketlist_data['intro'],
-                                    bucketlist_data['_id']
-                                    )
+                                    bucketlist_data['_id'])
             bucketlist.create_item(item_name=item_name,
                                    intro=intro,
-                                   bucketlist_id=bucketlist._id
-                                   )
+                                   bucketlist_id=bucketlist._id)
         except IndexError:
             return 'Item not found'
 
-    def del_bucket_item(self, _id):
+    def del_bucket_item(self, bucketlist_id):
         """Method for deleting  item from bukcet list"""
-        blist = [i for i in Data.all_items if
-                 _id == i['_id']]
+        blist = [l for l in Data.all_items if
+                 bucketlist_id == l['bucketlist_id']]
         Data.all_items.remove(blist[0])
         return True
 
