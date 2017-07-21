@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/github/cloudfoundry/membrane.png)](https://codeclimate.com/github/cloudfoundry/membrane)
+  [![Build Status](https://travis-ci.org/cloudfoundry/membrane.png)](https://travis-ci.org/cloudfoundry/membrane)
+
 # Bucket List App
 
 ## Introduction
@@ -21,34 +24,21 @@ This is a front-end website that has no core functionalities implemented into it
 ## Installation
 
 Clone the repo 
- ``git clone https://github.com/rosemaina/bucket_list.git <foldername>``
+ git clone https://github.com/rosemaina/bucket_list <foldername>
  
+ $ cd~/<foldername>
 
-Change the Directory into the project folder
- ``cd <foldername>``
-
-Create a virtual environment with Python
+Create a virtual environment with Python  
 On  Ubuntu:
-
-    ``$ sudo apt-get install python-virtualenv <yourenvname``
+$ sudo apt-get install python-virtualenv <yourenvname>  
 On Windows:
-
-    ``$ pip install virtualenv <yourenvname>``
-Activate the virtual environment
-
-    ``$ source <yourenvname>/bin/activate``
-Deactivate
-
-    ``$ deactivate``
-    
-
-Install the application's dependencies from requirements.txt to the virtual environment
-
-    ``$ pip install -r requirements.txt`` 
-    
-## Testing
-To test the app run the following command
-    ``nosetests bucket_list/tests``
+$ pip install virtualenv <yourenvname>  
+Activate the virtual environment  
+$ source <yourenvname>/bin/activate  
+Run the app on port 5000  
+python run.py
+Access the page in the browser
+localhost:5000
     
 
 
@@ -61,5 +51,6 @@ To test the app run the following command
 -Submit a pull request:D  
 
 ## Credits
+Rose Maina
 Andela Community  
 Andela Bootcamp 20
