@@ -1,0 +1,8 @@
+bucketenv/
+__pycache__/
+*.coverage
+*.pyc
+htmlcov/
+.vscode/
+*.noseids
+.noseids

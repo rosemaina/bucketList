@@ -8,32 +8,39 @@
 
 This is a front-end website that has no core functionalities implemented into it. It is therefore a designs page with no function pages. The application allows a user to create a bucket list, add items or activities, update the list, view the list and deleted items on the list or delete the list altogether.
 
-**features** 
+## Prerequisites
++python3
++flask    
 
-+Create accounts for the user  
-+Create a login in  
+**Getting Started** 
+
++A user can create an account  
++A user can login  
 +Create, view, update and delete bucket lists  
 +Add items to bucket list  
 +Update items to the bucket list  
 +View items in the bucket list  
 +Delete items in a bucket list  
 
-## Setting Up
 
-Clone the project
-git clone https://github.com/rosemaina/bucket_list <foldername>  
+## Installation
 
-$ cd~/<foldername>  
+Clone the repo 
+ git clone https://github.com/rosemaina/bucket_list <foldername>
+ 
+ $ cd~/<foldername>
 
-Create virtual environment:
-$ sudo apt-get install python-virtualenv  
-Activate virtualenv:
-$ source <envname>/bin/activate    
+Create a virtual environment with Python  
+On  Ubuntu:
+$ sudo apt-get install python-virtualenv <yourenvname>  
+On Windows:
+$ pip install virtualenv <yourenvname>  
+Activate the virtual environment  
+$ source <yourenvname>/bin/activate  
 Run the app on port 5000  
 python run.py
 Access the page in the browser
 localhost:5000
-
 
 ## Contributing 
 
