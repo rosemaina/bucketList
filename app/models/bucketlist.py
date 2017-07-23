@@ -21,6 +21,17 @@ class Bucketlist(object):
         # this saves items
         item.save_into_item()
 
+    def update_bucket_item(self, item_name, intro, bucketlist_id):
+        """Method used to update a bucketlist item"""
+        my_item = Data.all_items
+        for num in range(0, len(my_item)):
+            if bucketlist_id == my_item[num]['bucketlist_id']:
+                # gives the bucketlist index and keys whose value are updated
+                my_item[num]['item_name'] = item_name
+                my_item[num]['intro'] = intro
+                break
+        return "Item successfully updated"
+
     def bucketlist_data(self):
         """Returns data to be saved in the all_bucketlist list"""
         return {
