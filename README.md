@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/rosemaina/bucketlist.png)](https://codeclimate.com/github/rosemaina/bucketlist)
-  [![Build Status](https://travis-ci.org/cloudfoundry/membrane.png)](https://travis-ci.org/cloudfoundry/membrane)
-  [![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/codeclimate/coverage)
+  [![Build Status](https://travis-ci.org/rosemaina/bucketlist.svg?branch=master)](https://travis-ci.org/rosemaina/bucketlist)
+  [![Test Coverage](https://codeclimate.com/github/rosemaina/bucketlist.svg)](https://codeclimate.com/github/rosemaina/bucketlist)
   
 # Bucket List App
 
