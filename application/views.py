@@ -8,14 +8,13 @@ app.config.from_object(__name__)
 # used to create a cryptographic token that is used to validate a form
 app.secret_key = b'nGzc\xd6\x19\x03\x19\x8c\xa4\xed\xe6'
 
-all_users = {}
-all_bucketlists = {}
-all_items = {}
-
+class BucketlistData(object):
+    """ It holds all the data for the app """
+    all_users = {}
+    all_bucketlists = {}
+    all_items = {}
 
 @app.route('/')
-
-
 @app.route('/index', methods=['POST', 'GET'])
 def index():
     """renders the homepage of the app"""
@@ -24,7 +23,7 @@ def index():
         email = request.form['email']
         password = request.form['password']
         try:
-            if all_users[email] and all_users[email] == password:
+            if BucketlistData.all_users[email] and BucketlistData.all_users[email] == password:
                 session['logged_in'] = True
                 flash(email, ' you are logged in')
                 return redirect(url_for('create_bucketlist'))
@@ -48,7 +47,7 @@ def registration():
         if password != confirm_password:
             error = 'Passwords do not match!'
             return render_template('registration.html', error=error)
-        all_users[email] = password
+        BucketlistData.all_users[email] = password
         # saves the new user object to app.user
         session['logged_in'] = True
         return redirect(url_for('index'))
@@ -66,18 +65,18 @@ def create_bucketlist():
             # creating an instance of bucket
             new_bucketlist = Bucketlist(title, intro)
             # saving into a dict using bucket_id as key
-            all_bucketlists[new_bucketlist.bucket_id] = new_bucketlist
+            BucketlistData.all_bucketlists[new_bucketlist.bucket_id] = new_bucketlist
     else:
         return redirect(url_for('index'))
 
-    return render_template('create_list.html', bucketlist=all_bucketlists)
+    return render_template('create_list.html', bucketlist=BucketlistData.all_bucketlists)
 
 
 @app.route('/delete_bucket/<bucket_id>')
 def delete_bucket(bucket_id):
     """Route deletes a bucketlist """
     # deletes bucketlist using key[id]
-    del all_bucketlists[bucket_id]
+    del BucketlistData.all_bucketlists[bucket_id]
     return redirect(url_for('create_bucketlist'))
 
 
@@ -88,12 +87,12 @@ def edit_bucket(bucket_id):
         # gets the title and intro
         title = request.form['title']
         intro = request.form['intro']
-        bucketlist = all_bucketlists[bucket_id]
+        bucketlist = BucketlistData.all_bucketlists[bucket_id]
         bucketlist.title = title
         bucketlist.intro = intro
-        all_bucketlists[bucket_id] = bucketlist
+        BucketlistData.all_bucketlists[bucket_id] = bucketlist
         return redirect(url_for('create_bucketlist'))
-    return render_template('edit_bucket.html', bucketlist=all_bucketlists[bucket_id])
+    return render_template('edit_bucket.html', bucketlist=BucketlistData.all_bucketlists[bucket_id])
 
 
 
@@ -109,15 +108,15 @@ def create_item(bucket_id):
             # creating an instance of bucket item
             new_item = Item(item_name, description, bucket_id)
             # saving into a dict using id as key
-            all_items[new_item.item_id] = new_item
-    return render_template('create_item.html', item=all_items, bucket_id=bucket_id)
+            BucketlistData.all_items[new_item.item_id] = new_item
+    return render_template('create_item.html', item=BucketlistData.all_items, bucket_id=bucket_id)
 
 
 @app.route('/delete_item/<bucket_id>/<item_id>')
 def delete_item(item_id, bucket_id):
     """Route deletes a bucketlist """
     # deletes bucketlist item using key id
-    del all_items[item_id]
+    del BucketlistData.all_items[item_id]
     # returns create_item with the bucket_id
     return redirect('/create_item/{}'.format(bucket_id))
 
@@ -130,14 +129,15 @@ def edit_item(item_id, bucket_id):
         item_name = request.form['item_name']
         description = request.form['description']
 
-        item = all_items[item_id]
+        item = BucketlistData.all_items[item_id]
         item.item_name = item_name
         item.description = description
         # append to the dict new item
-        all_items[item_id] = item
+        BucketlistData.all_items[item_id] = item
         # passing in bucket_id
         return redirect('/create_item/' + bucket_id)
-    return render_template('edit_item.html', item=all_items[item_id])
+    return render_template('edit_item.html', 
+    item=BucketlistData.all_items[item_id])
 
 
 @app.route("/logout")
