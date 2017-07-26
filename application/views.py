@@ -17,7 +17,7 @@ all_items = {}
 
 
 @app.route('/index', methods=['POST', 'GET'])
-def login(self):
+def index():
     """renders the homepage of the app"""
     # you can enter the email,password
     if request.method == 'POST':
@@ -130,12 +130,14 @@ def edit_item(item_id, bucket_id):
         item_name = request.form['item_name']
         description = request.form['description']
 
-        item = all_bucketlists[bucket_id]
+        item = all_items[item_id]
         item.item_name = item_name
         item.description = description
+        # append to the dict new item
         all_items[item_id] = item
-        return redirect('/create_list')
-    return render_template('create_item.html', item=all_items[item_id])
+        # passing in bucket_id
+        return redirect('/create_item/' + bucket_id)
+    return render_template('edit_item.html', item=all_items[item_id])
 
 
 @app.route("/logout")
