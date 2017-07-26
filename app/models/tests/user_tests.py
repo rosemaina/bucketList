@@ -44,6 +44,8 @@ class Testuser(unittest.TestCase):
         result = User.register_user('Jane Doe', 'jdoe@email', '4444')
         self.assertEqual(result.email, 'jdoe@email')
 
+    
+
     def test_create_bucketlist(self):
         """Tests if a bucketlist has been created"""
         user = User('Jane Doe', 'jdoe', '9876')
