@@ -17,24 +17,24 @@ all_items = {}
 
 
 @app.route('/index', methods=['POST', 'GET'])
-    def login(self):
-        """renders the homepage of the app"""
-        # you can enter the email,password
-        if request.method == 'POST':
-            email = request.form['email']
-            password = request.form['password']
-            try:
-                if all_users[email] and all_users[email] == password:
-                    session['logged_in'] = True
-                    flash(email, ' you are logged in')
-                    return redirect(url_for('create_bucketlist'))
-                else:
-                    error = 'Wrong password!'
-                    return render_template('index.html', error=error)
-            except KeyError:
-                error = 'User does not exist'
+def login(self):
+    """renders the homepage of the app"""
+    # you can enter the email,password
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        try:
+            if all_users[email] and all_users[email] == password:
+                session['logged_in'] = True
+                flash(email, ' you are logged in')
+                return redirect(url_for('create_bucketlist'))
+            else:
+                error = 'Wrong password!'
                 return render_template('index.html', error=error)
-        return render_template('index.html')
+        except KeyError:
+            error = 'User does not exist'
+            return render_template('index.html', error=error)
+    return render_template('index.html')
 
 
 @app.route('/registration', methods=['GET', 'POST'])

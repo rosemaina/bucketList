@@ -79,7 +79,7 @@
                             <a href="#" id="shwitem">{{ item[activity].item_name }}</a>
                             <div class="pull-right">
                                 <a href="/delete_item/{{item[activity].bucket_id}}/{{item[activity].item_id}}" type="button" class="btn btn-danger">Delete</a>
-                                <a href="/edit_bucket/{{item[activity].bucket_id}}/{item[activity].item_id}}" class="btn btn-primary">Edit</a>
+                                <a href="/edit_item/{{item[activity].bucket_id}}/{{item[activity].item_id}}" class="btn btn-primary">Edit</a>
                             </div>
                         </li>
                         {% endif %}
