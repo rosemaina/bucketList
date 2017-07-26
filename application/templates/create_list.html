@@ -72,13 +72,15 @@
             <div class="col-md-7">
                 <section>
                     <h4>Bucket list</h4>
-                    <ul class="list-group">
+                     <ul class="list-group">
                         {% for bucket in bucketlist %}
                         <li class="list-group-item" style="padding:20px">
                             <a href="#" id="shwitem">{{ bucketlist[bucket].title }}</a>
                             <div class="pull-right">
-                                <a href="/delete_bucket/{{bucket}}" type="button" class="btn btn-danger">Delete</a>
+                                <a href="/create_item/{{bucket}}" type="button" class="btn btn-primary">Add</a>
                                 <a href="/edit_bucket/{{bucket}}" class="btn btn-primary">Edit</a>
+                                <a href="/delete_bucket/{{bucket}}" type="button" class="btn btn-danger">Delete</a>
+
                             </div>
                         </li>
                         {% endfor %}
@@ -87,43 +89,6 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title"><strong>View</strong> list</h4>
-                    <h5 class="list-title">My bucket list</h5>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <ul class="list-unstyled">
-                            <li>activity</li>
-                            <li>activity </li>
-                            <li>activity</li>
-                            <li>activity</li>
-                            <li>activity</li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Edit list</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            document.getElementById("shwitem").onclick = showmodal;
-            document.getElementById("shwitem2").onclick = showmodal;
-            document.getElementById("shwitem3").onclick = showmodal;
-            document.getElementById("shwitem4").onclick = showmodal;
-            document.getElementById("shwitem5").onclick = showmodal;
-            function showmodal() {
-                $("#myModal").modal('show');
-            };
-        </script>
+    
 </body>
 </html>

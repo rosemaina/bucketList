@@ -42,20 +42,20 @@
                 <section>
                     <!-- Form Name -->
                     <legend>Create Your Wish</legend>
-                    <form class="form-horizontal" action="/edit_bucket/{{bucketlist._id}}" method="post">
+                    <form class="form-horizontal" action="/edit_bucket/{{bucketlist.bucket_id}}" method="post">
                         <fieldset>
                             <!-- Text input-->
                             <div class="form-group">
                                 <!-- <label class="col-md-4 control-label" for="txtTitle">Title</label> -->
                                 
-                                    <input id="txtTitle" value="{{bucketlist.title}}" name="title" type="text" placeholder="your list title" class="form-control input-md">
+                                    <input id="txtTitle" value="{{bucketlist.title}}" name="title" type="text" placeholder="Your bucketlist title" class="form-control input-md">
                                
                             </div>
                             <!-- Textarea -->
                             <div class="form-group">
                                 <!-- <label class="col-md-4 control-label" for="txtDescription">Description</label> -->
                                 
-                                    <textarea class="form-control" id="txtDescription" name="intro" placeholder="your wish">{{bucketlist.intro}}</textarea>
+                                    <textarea class="form-control" id="txtDescription" name="intro" placeholder="Tell us more on the title">{{bucketlist.intro}}</textarea>
                                 
                             </div>
                             <!-- Button -->

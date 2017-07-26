@@ -4,10 +4,12 @@ import uuid
 class Bucketlist(object):
     """This is the main class"""
 
-    def __init__(self, title, intro, _id=None):
+    def __init__(self, title, intro, bucket_id=None):
         self.title = title
         self.intro = intro
-        self._id = uuid.uuid4().hex if _id is None else _id
+        self.bucket_id = str(uuid.uuid4().hex if bucket_id is None else bucket_id)
+        # self.items = {}
+
 
     # def create_bucketlist(self):
     #     """Method used for creating a bucketlist"""
