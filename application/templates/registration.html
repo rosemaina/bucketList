@@ -39,12 +39,20 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
 <div class="container" style="margin-top:80px;">
   <div class="row">
     <div class="col-sm-4"></div>
      <div class="col-sm-4 well">
 <form action='/registration' method='POST'>
-  {% if error%}<label style="color:red;">{{error}}</label> {% endif %}
+  {% if error%} 
+    <div class="alert alert-danger" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{error}}
+    </div>
+  {% endif %}
   <div class="form-group">
     <label for="email">email</label>
     <input type="text" name="email" value='{{request.form.email}}' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@email.com">
@@ -70,3 +78,11 @@
 </div>
 </div>
 </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script>w3.includeHTML();</script>
+  </body>
+</html>
