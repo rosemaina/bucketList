@@ -1,7 +1,7 @@
 
 [![Code Climate](https://codeclimate.com/github/rosemaina/bucketlist.png)](https://codeclimate.com/github/rosemaina/bucketlist)
   [![Build Status](https://travis-ci.org/rosemaina/bucketlist.svg?branch=master)](https://travis-ci.org/rosemaina/bucketlist)
-  [![Coverage Status](https://coveralls.io/repos/github/rosemaina/bucketlist/badge.svg?branch=master)](https://coveralls.io/github/rosemaina/bucketlist?branch=master)
+  [![Coverage Status](https://coveralls.io/repos/github/rosemaina/bucketlist/badge.svg?branch=feature)](https://coveralls.io/github/rosemaina/bucketlist?branch=feature)
 
 
   
