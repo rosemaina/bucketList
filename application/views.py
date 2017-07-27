@@ -14,6 +14,13 @@ class BucketlistData(object):
     all_bucketlists = {}
     all_items = {}
 
+    @staticmethod
+    # since i dont want to have an instance 
+    def del_bucketlist(bucket_id):
+        del BucketlistData.all_bucketlists[bucket_id]
+        return True
+        
+
 @app.route('/')
 @app.route('/index', methods=['POST', 'GET'])
 def index():
@@ -25,7 +32,7 @@ def index():
         try:
             if BucketlistData.all_users[email] and BucketlistData.all_users[email] == password:
                 session['logged_in'] = True
-                flash(email, ' you are logged in')
+                flash('You are logged in', 'success')
                 return redirect(url_for('create_bucketlist'))
             else:
                 error = 'Wrong password!'
@@ -46,6 +53,7 @@ def registration():
         confirm_password = request.form['confirm_password']
         if password != confirm_password:
             error = 'Passwords do not match!'
+            flash(error)
             return render_template('registration.html', error=error)
         BucketlistData.all_users[email] = password
         # saves the new user object to app.user
@@ -76,7 +84,7 @@ def create_bucketlist():
 def delete_bucket(bucket_id):
     """Route deletes a bucketlist """
     # deletes bucketlist using key[id]
-    del BucketlistData.all_bucketlists[bucket_id]
+    BucketlistData.del_bucketlist(bucket_id)
     return redirect(url_for('create_bucketlist'))
 
 
