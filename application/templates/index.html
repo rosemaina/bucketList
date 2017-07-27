@@ -46,6 +46,9 @@
     <div class="col-sm-4"></div>
      <div class="col-sm-4 well">
 <form action="" method="POST">
+  {% if alert %}
+    <p>{{ alert }}  </p>
+  {% endif %}
   {% if error%}<label style="color:red;">{{error}}</label> {%endif%}
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
