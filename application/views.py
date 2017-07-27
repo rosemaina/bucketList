@@ -1,5 +1,5 @@
 """This script Creates the application object"""
-from flask import Flask, render_template, request,
+from flask import Flask, render_template, request
 from flask import redirect, url_for, session, flash
 from application.models.bucketlist import Bucketlist
 from application.models.item import Item
@@ -8,6 +8,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 # used to create a cryptographic token that is used to validate a form
 app.secret_key = b'nGzc\xd6\x19\x03\x19\x8c\xa4\xed\xe6'
+# allows the app to run with or without the trailing slash
+app.url_map.strict_slashes = False
 
 
 class BucketlistData(object):
@@ -15,13 +17,7 @@ class BucketlistData(object):
     all_users = {}
     all_bucketlists = {}
     all_items = {}
-
-    @staticmethod
-    # since i dont want to have an instance
-    def del_bucketlist(bucket_id):
-        del BucketlistData.all_bucketlists[bucket_id]
-        return True
-
+    user_bucketlists = {}
 
 @app.route('/')
 @app.route('/index', methods=['POST', 'GET'])
@@ -32,10 +28,10 @@ def index():
         email = request.form['email']
         password = request.form['password']
         try:
-            if BucketlistData.all_users[email] and
-            BucketlistData.all_users[email] == password:
+            if (BucketlistData.all_users[email] and
+            BucketlistData.all_users[email] == password):
                 session['logged_in'] = True
-                flash('You are logged in', 'success')
+                # flash('You are logged in', 'success')
                 return redirect(url_for('create_bucketlist'))
             else:
                 error = 'Wrong password!'
@@ -58,10 +54,14 @@ def registration():
             error = 'Passwords do not match!'
             flash(error)
             return render_template('registration.html', error=error)
+        if email in BucketlistData.all_users:
+            error = 'Email is not available'
+            return render_template('registration.html', error=error) 
         BucketlistData.all_users[email] = password
         # saves the new user object to app.user
         session['logged_in'] = True
-        return redirect(url_for('index'))
+        session['user_email'] = email
+        return redirect(url_for('create_bucketlist'))
     return render_template('registration.html')
 
 
@@ -77,20 +77,20 @@ def create_bucketlist():
             # creating an instance of bucket
             new_bucketlist = Bucketlist(title, intro)
             # saving into a dict using bucket_id as key
-            BucketlistData.all_bucketlists[new_bucketlist.bucket_id] =
-            new_bucketlist
+            BucketlistData.all_bucketlists[new_bucketlist.bucket_id] = new_bucketlist
     else:
         return redirect(url_for('index'))
 
     return render_template('create_list.html',
-                           bucketlist=BucketlistData.all_bucketlists)
+                           bucketlist=BucketlistData.user_bucketlists)
 
 
 @app.route('/delete_bucket/<bucket_id>')
 def delete_bucket(bucket_id):
     """Route deletes a bucketlist """
     # deletes bucketlist using key[id]
-    BucketlistData.del_bucketlist(bucket_id)
+    del BucketlistData.all_bucketlists[bucket_id]
+    # BucketlistData.del_bucketlist(bucket_id)
     return redirect(url_for('create_bucketlist'))
 
 
@@ -158,5 +158,6 @@ def edit_item(item_id, bucket_id):
 @app.route("/logout")
 def logout():
     "Logs out a user"
-    session['logged_in'] = False
+    del session['logged_in']
+    del session['user_email']
     return redirect(url_for('index'))

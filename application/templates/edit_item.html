@@ -21,9 +21,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/index">Login <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/registration">Sign up</a></li>
                     <li><a href="/create_list">create list</a></li>
+                    <li><a href="/logout">logout</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" style="color:lightblue;"></i></a></li>
@@ -41,7 +40,7 @@
             <div class="col-sm-5">
                 <section>
                     <!-- Form Name -->
-                    <legend>Create Your Task</legend>
+                    <legend>Edit Your Bucket List Item</legend>
                     <form class="form-horizontal" action="/edit_item/{{item.bucket_id}}/{{item.item_id}}" method="post">
                         <fieldset>
                             <!-- Text input-->
