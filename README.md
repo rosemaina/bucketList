@@ -12,7 +12,7 @@
 This is a front-end website that has no core functionalities implemented into it. It is therefore a designs page with no function pages. The application allows a user to create a bucket list, add items or activities, update the list, view the list and deleted items on the list or delete the list altogether.
 
 ## Prerequisites
-+python3
++python3  
 +flask    
 
 **Getting Started** 
@@ -27,11 +27,13 @@ This is a front-end website that has no core functionalities implemented into it
 
 
 ## Installation
+Heroku link: https://bucket-list101.herokuapp.com/
+Loclhost: http://127.0.0.1:5000
 
 Clone the repo 
  git clone https://github.com/rosemaina/bucket_list <foldername>
  
- $ cd~/<foldername>
+ $ cd~/foldername
 
 Create a virtual environment with Python  
 On  Ubuntu:
@@ -52,6 +54,9 @@ localhost:5000
 -Commit your changes: git commit -m 'Add some feature'  
 -Push to the branch: git push -u origin my-new-feature  
 -Submit a pull request:D  
+
+## Testing
+nosetests--coverage
 
 ## Credits
 Rose Maina  
