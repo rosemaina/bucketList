@@ -9,7 +9,7 @@ class TestBucketApp(TestCase):
         # method creates a new test client
         self.client = app.test_client(self)
         self.bucket1 = Bucketlist("Bucket 1", "Intro 1")
-    
+
     def register_user(self):
         """Method that registers a user"""
         data = {'email': 'test@test.com', 'password':'12345678', 'confirm_password':'12345678'}
@@ -22,30 +22,31 @@ class TestBucketApp(TestCase):
 
     def create_bucketlist(self):
         """Method creates a new bucketlist"""
-        # new_bucket = Bucketlist('bucket1', 'new bucket')
-        data = {'title':'bucket1',  'intro': 'butcketigbgb'}
-
+        data = {'title':'bucket1', 'intro': 'my new bucket'}
         return self.client.post('/create_list', data=data)
 
-    # TESTS FOR THE CLASS
+    # TESTS FOR THE BucketlistData Class
+    # USER TESTS
     def test_register_new_user(self):
         """Test to regitster a user"""
         self.register_user()
         data = {'test@test.com':'12345678'}
         self.assertEqual((BucketlistData.all_users), data)
-    
+
     def test_same_email(self):
         """Test if same email registered msg returned"""
         self.register_user()
-        data = {'email': 'test@test.com', 'password':'12345678'}
-        self.assertEqual(data, 'Email is not available. Choose another name')
-    
+        result = self.register_user()
+        # catching the result given after reg_user twice
+        self.assertIn(b'Email is not available. Choose another email', result.data)
+
     def test_same_password(self):
         """Tests if passwords match"""
-        self.register_user()
-        data = {'test@test.com': '87654321'}
-        self.assertEqual((BucketlistData.all_users),data)
-    
+        data = {'email': 'test@test.com', 'password':'abcdefgh', 'confirm_password':'12345678'}
+        # receives the result when you submit wrong passwords
+        result =  self.client.post('/registration', data=data)
+        self.assertIn('Passwords do not match', result.data)
+
     def test_create_bucketlist(self):
         """Test for creating s bucketlist"""
         self.register_user()

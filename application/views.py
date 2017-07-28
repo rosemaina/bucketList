@@ -56,10 +56,10 @@ def registration():
             flash(error)
             return render_template('registration.html', error=error)
         if email in BucketlistData.all_users:
-            error = 'Email is not available. Choose another name'
+            error = 'Email is not available. Choose another email'
             return render_template('registration.html', error=error)
-        BucketlistData.all_users[email] = password
         # saves the new user object to app.user
+        BucketlistData.all_users[email] = password
         session['logged_in'] = True
         return redirect(url_for('create_bucketlist'))
     return render_template('registration.html')
