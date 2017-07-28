@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <title> Bucket-list App</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="create_list.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="#"><strong>Bucket</strong> list</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/create_list">create list</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" style="color:lightblue;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.slack.com/"><i class="fa fa-slack" style="color:red;"></i></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <section>
+                    <!-- Form Name -->
+                    <legend>Edit Bucket List</legend>
+                    <form class="form-horizontal" action="/edit_bucket/{{bucketlist.bucket_id}}" method="post">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <!-- <label class="col-md-4 control-label" for="txtTitle">Title</label> -->
+                                
+                                    <input id="txtTitle" value="{{bucketlist.title}}" name="title" type="text" placeholder="Your bucketlist title" class="form-control input-md">
+                               
+                            </div>
+                            <!-- Textarea -->
+                            <div class="form-group">
+                                <!-- <label class="col-md-4 control-label" for="txtDescription">Description</label> -->
+                                
+                                    <textarea class="form-control" id="txtDescription" name="intro" placeholder="Tell us more on the title">{{bucketlist.intro}}</textarea>
+                                
+                            </div>
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="singlebutton"></label>
+                                <div class="col-md-4">
+                                    <input id="singlebutton" name="singlebutton" class="btn btn-success btn-block" type="submit" value="Post" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+            </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            document.getElementById("shwitem").onclick = showmodal;
+            document.getElementById("shwitem2").onclick = showmodal;
+            document.getElementById("shwitem3").onclick = showmodal;
+            document.getElementById("shwitem4").onclick = showmodal;
+            document.getElementById("shwitem5").onclick = showmodal;
+            function showmodal() {
+                $("#myModal").modal('show');
+            };
+        </script>
+</body>
+</html>
